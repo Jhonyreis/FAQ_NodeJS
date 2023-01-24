@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const conn = require('./database/database');
-const PerguntaModel = require('./database/Ask')
+const Pergunta = require('./database/Ask')
 
 //Database
 conn
@@ -33,8 +33,18 @@ app.get('/perguntar', (req, res) => {
 
 app.post('/saveask', (req, res) => {
   var titulo = req.body.titulo;
-  var pergunta = req.body.pergunta;
-  res.send('form recebido Título: ' + titulo);
+  var descricao = req.body.descricao;
+  //exibindo dados na tela
+  //res.send('form recebido Título: ' + titulo);
+
+  //salvando dados no banco de dados
+  Pergunta.create({
+    titulo: titulo,
+    descricao: descricao
+  }).then(() => {
+    res.redirect('/');
+  });
+
 });
 
 app.listen(8080, () => {
