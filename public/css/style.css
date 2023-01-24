@@ -1,0 +1,10 @@
+body {
+  background-color: #eceff1;
+}
+.navbar-brand img {
+  width: 150px;
+  height: auto;
+}
+.navbar {
+  margin-bottom: 30px;
+}

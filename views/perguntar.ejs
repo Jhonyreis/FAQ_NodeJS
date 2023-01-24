@@ -1,0 +1,39 @@
+<%- include ('./partials/header.ejs') %>
+
+  <body>
+    <%- include ('./partials/navbar.ejs') %>
+
+      <div class="container">
+        <form action="/saveask" class="form_pergunta" method="POST">
+          <div class="card">
+            <div class="card-header">
+              <h3>Fazer Pergunta</h3>
+            </div>
+            <div class="card-body">
+              <div class="row" style="padding-bottom: 20px;">
+                <div class="col-md-12">
+                  <label for="titulo">Título</label>
+                  <input type="text" name="titulo" id="titulo" class="form-control">
+                </div>
+              </div>
+              <div class="row" style="padding-bottom: 20px;">
+                <div class="col-md-12">
+                  <label for="pergunta">Pergunta</label>
+                  <textarea name="pergunta" id="pergunta" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="row" style="padding-bottom: 20px;">
+                <div class="col-md-12">
+                  <input type="submit" value="Enviar" class="btn btn-primary">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      </div><!-- fecha container -->
+
+  </body>
+
+  <%- include ('./partials/footer.ejs') %>
