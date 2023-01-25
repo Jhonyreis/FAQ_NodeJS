@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const conn = require('./database/database');
 const Pergunta = require('./database/Ask')
 
-//Database
+// Database
 conn
   .authenticate()
   .then(() => {
@@ -15,16 +15,21 @@ conn
     console.log(err);
   });
 
+// Iniciando engine e Configurando express para busca de assets
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-//body Parser
+// Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Rotas
+// Rotas
 app.get('/', (req, res) => {
-  res.render('index');
+  Pergunta.findAll({raw: true}).then((perguntas) => {
+    res.render('index', {
+      perguntas: perguntas
+    });
+  });
 });
 
 app.get('/perguntar', (req, res) => {
