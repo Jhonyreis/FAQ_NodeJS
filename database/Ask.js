@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const conn = require('./database');
+const conn = require('./Database');
 
 //criando tabela com campos Título e Descrição
 const Pergunta = conn.define('perguntas', {
@@ -13,8 +13,8 @@ const Pergunta = conn.define('perguntas', {
   }
 }); 
 
-Pergunta.sync({force: false}).then(() => {
+Pergunta.sync({force: false}).then(/*() => {
   console.log('tabela criada');
-});
+}*/);
 
 module.exports = Pergunta;
