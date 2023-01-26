@@ -54,6 +54,23 @@ app.post('/saveask', (req, res) => {
 
 });
 
+//rota da pergunta isolada
+app.get('/pergunta/:id', (req, res) => {
+  var id = req.params.id;
+  //consultando no módulo Pergunta a busca por ID
+  Pergunta.findOne({
+    where: {id: id}
+  //}).then( pergunta => { //isolando a linha encontrada na variável pergunta
+  }).then( pergunta => {
+    //tratando retorno
+    if( pergunta != undefined ) {
+      res.render('pergunta');
+    } else {
+      res.redirect('/');
+    }
+  });
+});
+
 app.listen(8080, () => {
   console.log('app rodando!');
 });
