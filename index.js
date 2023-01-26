@@ -73,6 +73,17 @@ app.get('/pergunta/:id', (req, res) => {
     }
   });
 });
+//sanvando resposta no DB
+app.post('/saveresp', (req, res) => {
+  var corpo = req.body.corpo;
+  var perguntaID = req.body.pergunta;
+  Resposta.create({
+    corpo: corpo,
+    perguntaID: perguntaID
+  }).then(() => {
+    res.redirect('/pergunta/' + perguntaID)
+  })
+})
 
 app.listen(8080, () => {
   console.log('app rodando!');

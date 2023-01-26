@@ -11,11 +11,17 @@
           <div class="card-body">
             <p><%= pergunta.descricao %></p>
           </div>
-          <div class="card-footer">
+          <!-- <div class="card-footer">
             <button type="submit" class="btn btn-primary">Responder</button>
-          </div>
+          </div> -->
         </div>
-
+        <form action="/saveresp" method="post">
+          <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
+          <h4 style="margin: 20px 0;">Responda</h4>
+          <label for="corpo">Resposta:</label>
+          <textarea name="corpo" id="corpo" cols="30" rows="10" class="form-control" placeholder="Digite sua resposta" style="margin-bottom: 20px;"></textarea>
+          <button type="submit" class="btn btn-primary">Responder</button>
+        </form>
       </div><!-- fecha container -->
 
   </body>
